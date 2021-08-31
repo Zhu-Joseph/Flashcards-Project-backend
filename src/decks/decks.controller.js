@@ -1,7 +1,9 @@
+const service = require("./decks.service")
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary")
 
-function list(req, res, next) {
-    res.send("Decks is working")
+async function list(req, res, next) {
+    const data = await service.list()
+    res.json({data})
 }
 
 
