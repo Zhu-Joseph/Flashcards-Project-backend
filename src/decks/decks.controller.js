@@ -55,7 +55,6 @@ async function destory(req, res, next) {
     res.sendStatus(204)
 }
 
-
 module.exports = {
     list: asyncErrorBoundary(list),
     read: [deckExist, asyncErrorBoundary(read)],
