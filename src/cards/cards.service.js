@@ -12,6 +12,12 @@ function findCardDeck (deckId) {
     .where({"deckId": deckId})
 }
 
+function create(cards) {
+    return knex("cards") 
+    .insert(cards, "*")
+    .then((createCard) => createCard[0])
+}
+
 function read (cardId) {
     return knex("cards")
     .select("*")
@@ -23,5 +29,6 @@ function read (cardId) {
 module.exports = {
     list,
     findCardDeck,
+    create,
     read
 }

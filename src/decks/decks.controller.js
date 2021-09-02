@@ -60,5 +60,6 @@ module.exports = {
     read: [deckExist, asyncErrorBoundary(read)],
     create: [has_name, has_description, asyncErrorBoundary(create)],
     update: [deckExist, has_name, has_description, asyncErrorBoundary(updateDecks)],
-    delete: [deckExist, asyncErrorBoundary(destory)]
+    delete: [deckExist, asyncErrorBoundary(destory)],
+    deckExist
 }

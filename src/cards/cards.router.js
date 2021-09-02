@@ -6,6 +6,7 @@ router.route("/:cardId")
     .get(controller.read)
 
 router.route("/")
+    .post(controller.create)
     .get(controller.findCardDeck)
 
 module.exports = router
