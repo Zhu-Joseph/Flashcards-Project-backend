@@ -13,7 +13,14 @@ function findDeck(deckId) {
     .first()
 }
 
+function create(decks) {
+    return knex("decks") 
+    .insert(decks, "*")
+    .then((createDeck) => createDeck[0])
+}
+
 module.exports = {
     list,
-    findDeck
+    findDeck,
+    create
 }

@@ -5,6 +5,7 @@ router.route("/:deckId")
     .get(controller.read)
 
 router.route("/")
+    .post(controller.create)
     .get(controller.list)
 
 module.exports = router
