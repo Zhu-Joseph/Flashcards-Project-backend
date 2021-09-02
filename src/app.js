@@ -13,11 +13,6 @@ app.use(express.json());
 app.use("/decks", decksRouter)
 app.use("/cards", cardsRouter)
 
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
 app.use(notFound)
 app.use(errorHandler)
 
