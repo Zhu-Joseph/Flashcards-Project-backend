@@ -25,10 +25,24 @@ function read (cardId) {
     .first()
 }
 
+function updateCards(cardId, update) {
+    return knex("cards")
+    .select("*")
+    .where({"id": cardId})
+    .update(update,"*")
+} 
+
+function destory(cardId) {
+    return knex("cards")
+    .where({"id": cardId})
+    .del()
+}
 
 module.exports = {
     list,
     findCardDeck,
     create,
-    read
+    read,
+    updateCards,
+    destory
 }

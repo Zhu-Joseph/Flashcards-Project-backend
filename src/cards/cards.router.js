@@ -3,6 +3,8 @@ const controller = require("./cards.controller")
 
 
 router.route("/:cardId")
+    .put(controller.update)
+    .delete(controller.delete)
     .get(controller.read)
 
 router.route("/")

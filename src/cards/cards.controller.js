@@ -1,5 +1,4 @@
 const service = require("./cards.service")
-// const { findDeck } = require("../decks/decks.service")
 const deckService = require("../decks/decks.service")
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary")
 
@@ -71,9 +70,25 @@ async function create(req, res, next) {
     res.status(201).json({data})
 }
 
+async function updateCards(req, res, next) {
+    const id = res.locals.cards.id 
+    const newInfo = req.body.data
+    const update = await service.updateCards(id, newInfo)
+
+    res.json({data: update})
+}
+
+async function destory(req, res, next) {
+    const id = res.locals.cards.id
+    const data = await service.destory(id)
+    res.sendStatus(204)
+}
+
 module.exports = {
     list,
     findCardDeck: [foundDeck, asyncErrorBoundary(findCardDeck)],
     create: [has_front, has_back, has_deckId, deckExist, asyncErrorBoundary(create)],
-    read: [cardExist, asyncErrorBoundary(read)]
+    read: [cardExist, asyncErrorBoundary(read)],
+    update: [has_front, has_back, has_deckId, deckExist, cardExist, asyncErrorBoundary(updateCards)],
+    delete: [cardExist, destory]
 }
