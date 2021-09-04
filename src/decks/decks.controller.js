@@ -28,12 +28,12 @@ async function deckExist(req, res, next) {
 // VALIDATION FUNCTIONS ABOVE, API CALLS BELOW
 async function list(req, res, next) {
     const data = await service.list()
-    res.json({data})
+    res.json(data)
 }
 
 async function read(req, res, next) {
     const data = res.locals.deck
-    res.status(200).json({data})
+    res.status(200).json(data)
 }
 
 async function create(req, res, next) {
