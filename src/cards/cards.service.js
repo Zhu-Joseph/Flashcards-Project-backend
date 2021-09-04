@@ -10,6 +10,7 @@ function findCardDeck (deckId) {
     return knex("cards")
     .select("*")
     .where({"deckId": deckId})
+    .orderBy("id")
 }
 
 function create(cards) {

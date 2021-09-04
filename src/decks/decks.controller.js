@@ -1,4 +1,7 @@
 const service = require("./decks.service")
+
+const cardService = require("../cards/cards.service")
+
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary")
 
 function bodyDataHas(propertyName) {
@@ -36,6 +39,15 @@ async function read(req, res, next) {
     res.status(200).json(data)
 }
 
+// DRAWING FROM CARDS TABLE
+async function listCards(req, res, next) {
+    const deckId = res.locals.deck.id
+    const data = await cardService.findCardDeck(deckId)
+    res.json(data)
+}
+
+
+
 async function create(req, res, next) {
     const data = await service.create(req.body.data)
     res.status(201).json({data})
@@ -57,7 +69,7 @@ async function destory(req, res, next) {
 
 module.exports = {
     list: asyncErrorBoundary(list),
-    read: [deckExist, asyncErrorBoundary(read)],
+    listCards: [deckExist, asyncErrorBoundary(listCards)],
     create: [has_name, has_description, asyncErrorBoundary(create)],
     update: [deckExist, has_name, has_description, asyncErrorBoundary(updateDecks)],
     delete: [deckExist, asyncErrorBoundary(destory)]
