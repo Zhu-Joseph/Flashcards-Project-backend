@@ -46,7 +46,12 @@ async function listCards(req, res, next) {
     res.json(data)
 }
 
-
+// JOINS WITH CARDS AND TABLE
+async function findAllCards(req, res, next) {
+    const deckId = res.locals.deck.id
+    const data = await service.findAllCards(deckId)
+    res.json(data)
+}
 
 async function create(req, res, next) {
     const data = await service.create(req.body.data)
@@ -69,7 +74,7 @@ async function destory(req, res, next) {
 
 module.exports = {
     list: asyncErrorBoundary(list),
-    listCards: [deckExist, asyncErrorBoundary(listCards)],
+    findAllCards: [deckExist, asyncErrorBoundary(findAllCards)],
     create: [has_name, has_description, asyncErrorBoundary(create)],
     update: [deckExist, has_name, has_description, asyncErrorBoundary(updateDecks)],
     delete: [deckExist, asyncErrorBoundary(destory)]

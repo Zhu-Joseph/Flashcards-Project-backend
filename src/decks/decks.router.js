@@ -4,7 +4,7 @@ const controller = require("./decks.controller")
 router.route("/:deckId")
     .put(controller.update)
     .delete(controller.delete)
-    .get(controller.listCards)
+    .get(controller.findAllCards)
 
 router.route("/")
     .post(controller.create)

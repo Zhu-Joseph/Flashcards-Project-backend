@@ -13,6 +13,13 @@ function findDeck(deckId) {
     .first()
 }
 
+function findAllCards(deckId) {
+    return knex("decks as d")
+    .join("cards as c", "c.deckId", "d.id")
+    .select("*")
+    .where({"c.deckId": deckId})
+}
+
 function create(decks) {
     return knex("decks") 
     .insert(decks, "*")
@@ -37,5 +44,6 @@ module.exports = {
     findDeck,
     create,
     updateDecks,
+    findAllCards,
     destory
 }
