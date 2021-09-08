@@ -48,9 +48,14 @@ async function listCards(req, res, next) {
 
 // JOINS WITH CARDS AND TABLE
 async function findAllCards(req, res, next) {
-    const deckId = res.locals.deck.id
-    const data = await service.findAllCards(deckId)
-    res.json(data)
+    const deck = res.locals.deck
+    const data = await service.findAllCards(deck.id)
+
+    if(data.length === 0) {
+        res.json(deck)
+    } else {
+        res.json(data)
+    }
 }
 
 async function create(req, res, next) {
