@@ -1,4 +1,13 @@
 const knex = require("../db/connection")
+const reduceProperties = require("../utils/reduce-properties")
+
+const reduceCards = reduceProperties("id", {
+    deckId: ["cards", null, "deckId"],
+    front: ["cards", null, "front"],
+    back: ["cards", null, "back"],
+    // cardid: ["cards", null, "id"],
+  });
+
 
 function list() {
     return knex("decks")
@@ -16,8 +25,10 @@ function findDeck(deckId) {
 function findAllCards(deckId) {
     return knex("decks as d")
     .join("cards as c", "c.deckId", "d.id")
-    .select("*")
+    .select("c.*", "d.*")
     .where({"c.deckId": deckId})
+    .then(reduceCards)
+    .then((createDeck) => createDeck[0])
 }
 
 function create(decks) {

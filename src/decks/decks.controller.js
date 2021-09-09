@@ -2,7 +2,7 @@ const service = require("./decks.service")
 
 const cardService = require("../cards/cards.service")
 
-const asyncErrorBoundary = require("../errors/asyncErrorBoundary")
+const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
 function bodyDataHas(propertyName) {
     return function (req, res, next) {
@@ -51,7 +51,7 @@ async function findAllCards(req, res, next) {
     const deck = res.locals.deck
     const data = await service.findAllCards(deck.id)
 
-    if(data.length === 0) {
+    if(!data) {
         res.json(deck)
     } else {
         res.json(data)
