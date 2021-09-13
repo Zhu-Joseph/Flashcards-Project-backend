@@ -1,7 +1,7 @@
 {
   "name": "flashcards-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend for Simple Study",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",

@@ -15,4 +15,3 @@ knex.migrate
   });
 
 const listener = () => console.log(`Listening on Port ${PORT}!`);
-app.listen(PORT, listener);
