@@ -27,7 +27,7 @@ function findAllCards(deckId) {
     .select("c.*", "d.*")
     .where({"c.deckId": deckId})
     .then(reduceCards)
-    .then((createDeck) => createDeck[0])
+    .then((findCard) => findCard[0])
 }
 
 function create(decks) {
