@@ -3,14 +3,14 @@ const knex = require("../db/connection")
 function list() {
     return knex("cards")
     .select("*")
-    .orderBy("id")
+    .orderBy("cardId")
 }
 
 function findCardDeck (deckId) {
     return knex("cards")
     .select("*")
     .where({"deckId": deckId})
-    .orderBy("id")
+    .orderBy("cardId")
 }
 
 function create(cards) {
@@ -22,20 +22,20 @@ function create(cards) {
 function read (cardId) {
     return knex("cards")
     .select("*")
-    .where({"id": cardId})
+    .where({"cardId": cardId})
     .first()
 }
 
 function updateCards(cardId, update) {
     return knex("cards")
     .select("*")
-    .where({"id": cardId})
+    .where({"cardId": cardId})
     .update(update,"*")
 } 
 
 function destory(cardId) {
     return knex("cards")
-    .where({"id": cardId})
+    .where({"cardId": cardId})
     .del()
 }
 

@@ -5,9 +5,8 @@ const reduceCards = reduceProperties("id", {
     deckId: ["cards", null, "deckId"],
     front: ["cards", null, "front"],
     back: ["cards", null, "back"],
-    // cardid: ["cards", null, "id"],
+    cardId: ["cards", null, "cardId"],
   });
-
 
 function list() {
     return knex("decks")

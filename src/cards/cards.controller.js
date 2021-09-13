@@ -2,7 +2,6 @@ const service = require("./cards.service")
 const deckService = require("../decks/decks.service")
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary")
 
-
 async function foundDeck(req, res, next) {
     const deckId = req.query.deckId
     const foundCardDeck = await service.findCardDeck(deckId)
@@ -71,7 +70,7 @@ async function create(req, res, next) {
 }
 
 async function updateCards(req, res, next) {
-    const id = res.locals.cards.id 
+    const id = res.locals.cards.cardId 
     const newInfo = req.body.data
     const update = await service.updateCards(id, newInfo)
 
@@ -79,7 +78,7 @@ async function updateCards(req, res, next) {
 }
 
 async function destory(req, res, next) {
-    const id = res.locals.cards.id
+    const id = res.locals.cards.cardId
     const data = await service.destory(id)
     res.sendStatus(204)
 }

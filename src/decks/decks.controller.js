@@ -1,7 +1,4 @@
 const service = require("./decks.service")
-
-const cardService = require("../cards/cards.service")
-
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
 function bodyDataHas(propertyName) {
@@ -34,19 +31,6 @@ async function list(req, res, next) {
     res.json(data)
 }
 
-async function read(req, res, next) {
-    const data = res.locals.deck
-    res.status(200).json(data)
-}
-
-// DRAWING FROM CARDS TABLE
-async function listCards(req, res, next) {
-    const deckId = res.locals.deck.id
-    const data = await cardService.findCardDeck(deckId)
-    res.json(data)
-}
-
-// JOINS WITH CARDS AND TABLE
 async function findAllCards(req, res, next) {
     const deck = res.locals.deck
     const data = await service.findAllCards(deck.id)
