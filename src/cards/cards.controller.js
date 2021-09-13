@@ -61,7 +61,7 @@ async function findCardDeck(req, res, next) {
 
 async function read(req, res, next) {
     const data = res.locals.cards
-    res.status(200).json({data})
+    res.status(200).json(data)
 }
 
 async function create(req, res, next) {

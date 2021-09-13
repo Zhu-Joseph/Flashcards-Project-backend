@@ -17,17 +17,5 @@ function mapProperties(configuration) {
     return data;
   };
 }
-// TRY TO MAKE A QUERY TO GET ALL THE DECKS AND HAVE THE CARDS
-// AS PART OF AN ARRAY SO:
 
-// {
-//     id: 1,
-//     name: Name of Deck,
-//     description: desctiption of deck,
-//     card: [
-//         card 1 info,
-//         card 2 info,
-//         card 3 info
-//     ]
-// }
 module.exports = mapProperties;
